@@ -6,3 +6,4 @@ venv/
 *.pem
 .DS_Store
 .idea/
+.chainlit/
