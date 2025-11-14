@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2025-11-15",
+    "title": "Réunion trimestrielle du budget",
+    "participants": ["Bintou", "Chef financier"],
+    "details": "Revoir les dépenses du Q4."
+  },
+  {
+    "date": "2025-12-01",
+    "title": "Date limite rapport annuel",
+    "details": "Soumettre le rapport à l'autorité de régulation."
+  },
+  {
+    "date": "aujourd'hui",
+    "title": "Rappel: Appeler le client X",
+    "details": "Discuter du nouveau contrat d'investissement."
+  }
+]
