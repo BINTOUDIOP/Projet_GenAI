@@ -6,4 +6,3 @@ venv/
 *.pem
 .DS_Store
 .idea/
-chroma_db/
