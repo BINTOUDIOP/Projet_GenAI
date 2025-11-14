@@ -1,0 +1,16 @@
+# pip install -r requirements.txt
+langchain
+langchain-core
+langchain_chroma
+langchain-community
+langchain-text-splitters
+langchain-openai
+langgraph
+langchain_tavily
+chromadb
+pypdf
+tavily-python
+requests
+
+chainlit
+python-dotenv
