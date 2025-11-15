@@ -25,6 +25,10 @@ L'architecture est construite autour de l'outil **LangGraph**, qui gère l'état
 
 * **Python :** Version 3.11
 * **Clés API :** Une clé **OpenAI API Key** est obligatoire. Une clé **Tavily API Key** est nécessaire pour la recherche web.
+* **Clés Google Cloud** pour le déploiement :  
+  -`GCP_PROJECT_ID` : ID de ton projet Google Cloud  
+  -`GCP_REGION` : Région de déploiement Cloud Run  
+  -`GCP_SA_KEY` : Fichier JSON de ta **Service Account Key** 
 
 ### 2. Configuration de l'Environnement
 
@@ -54,10 +58,17 @@ Le processus d'ingestion est géré automatiquement au premier lancement (ou lor
 
 ### 5. Lancement de l'Application
 Lancez l'interface web via Chainlit :
+l'application sera accessible via l'URL affichée dans le terminal (généralement http://localhost:8000).
 ```bash
 chainlit run app_chainlit.py -w
 ```
-L'application sera accessible via l'URL affichée dans le terminal (généralement http://localhost:8000).
+
+### 5. Déploiement sur le cloud
+Le projet a été déployé temporairement sur Google Cloud Run via GitHub Actions :
+- L’URL de l’application est accessible pour tester l’assistant à distance mais elle sera désactivée après la période de test.https://agent-orchestre-finance-750867412054.europe-west9.run.app/
+- logs et erreurs sont monitorés via Cloud Run pour assurer la stabilité durant la période active.
+
+
 # Instructions de Test
 L'Agent Orchestrateur est capable de choisir l'outil approprié. Testez les différents modes :
 
