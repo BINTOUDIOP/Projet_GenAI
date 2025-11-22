@@ -1,3 +1,4 @@
+# lien du document: https://www.lafinancepourtous.com/IMG/pdf/guide_pedagogique/guide-pedagogique.pdf
 import chainlit as cl
 import os
 from dotenv import load_dotenv
@@ -30,21 +31,9 @@ async def start():
     # 3. Message de bienvenue avec statut et exemples
     await cl.Message(
         content=f" **Assistant Financier Multi Compétences**\n\n"
-                f"Bonjour ! Je peux répondre à vos questions, faire des calculs précis et chercher des informations en temps réel.\n\n"
-                f"{rag_status}",
+                f"Bonjour ! Je peux répondre à vos questions, faire des calculs précis et chercher des informations en temps réel.\n\n",
         author="Assistant",
     ).send()
-
-    await cl.Message(
-        content="Voici quelques exemples de questions que vous pouvez me poser :\n"
-                "Quelle est la définition de la monnaie selon nos documents ?\n"
-                "Calculez 5000 * (1 + 0.045)^5\n"
-                "Qui est le CEO de LVMH ?\n"
-                "Quels événements sont prévus pour ce week-end ?",
-        author="Assistant",
-    ).send()
-
-
 @cl.on_message
 async def main(message: cl.Message):
     """Fonction appelée à chaque nouveau message utilisateur."""

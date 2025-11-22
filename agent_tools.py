@@ -1,4 +1,3 @@
-# tools.py
 import os
 import requests
 import ast
@@ -11,12 +10,12 @@ from typing import List, Dict, Any
 from langchain_core.tools import tool
 from langchain_tavily import TavilySearch
 
-# --- Configuration et Initialisation ---
+# Configuration et Initialisation
 load_dotenv()
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 CALENDAR_FILE = "./data/calendar.json"
 
-# --- Outil 1 : Calculatrice Sécurisée ---
+# Outil 1 : Calculatrice Sécurisée
 
 # Opérateurs autorisés pour l'évaluation sécurisée
 ALLOWED_OPERATORS = {
@@ -55,17 +54,20 @@ def calculate_financial_operation(expression: str) -> str:
     return safe_eval(expression)
 
 
-# --- Outil 2 : Recherche Web (Tavily) ---
+# Outil 2 : Recherche Web (Tavily)
+tavily_search_instance = TavilySearch(max_results=3)
+@tool
+def recherche_web_actualites(query: str) -> str:
+    """
+    Utilisez cet outil pour trouver des informations externes...
+    """
+    try:
+        return tavily_search_instance.invoke(query)
+    except Exception as e:
+        return f"Erreur lors de la recherche web (Tavily): {e}"
 
-# TavilySearchResults est déjà une classe Tool/Runnable
-web_search_tool = TavilySearch(
-    name="recherche_web_actualites",
-    description="Utilisez cet outil pour trouver des informations externes, des actualités financières récentes, ou des définitions qui ne sont pas dans les documents internes.",
-    max_results=3
-)
 
-
-# --- Outil 3 : Météo (OpenWeatherMap) ---
+# Outil 3 : Météo (OpenWeatherMap)
 
 @tool
 def get_weather_for_city(city: str) -> str:
@@ -92,7 +94,7 @@ def get_weather_for_city(city: str) -> str:
         return "Erreur de connexion à l'API météo. Veuillez réessayer."
 
 
-# --- Outil 4 : Calendrier / Todo List Locale ---
+# Outil 4 : Calendrier /
 
 @tool
 def read_calendar(query: str) -> str:
@@ -122,12 +124,11 @@ def read_calendar(query: str) -> str:
         return f"Erreur lors de la lecture du calendrier: {e}"
 
 
-# --- Liste des Outils Exportée ---
 
-# NOTE : La recherche web est ajoutée directement car elle est déjà une classe Tool
+
 EXTERNAL_TOOLS = [
     calculate_financial_operation,
-    web_search_tool,
+    recherche_web_actualites,
     get_weather_for_city,
     read_calendar
 ]

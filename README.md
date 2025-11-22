@@ -1,4 +1,4 @@
-# Assistant Intelligent Multi-Compétences (RAG + Agents)
+# Assistant intelligent multi-compétences (RAG + Agents)
 
 Ce projet implémente un assistant conversationnel basé sur l'IA, capable d'orchestrer plusieurs compétences : la recherche d'informations dans des documents internes (**RAG** - Retrieval-Augmented Generation) et l'utilisation d'outils externes (**Agents** - Calcul, Météo, Web).
 
@@ -6,7 +6,7 @@ L'architecture utilise **LangChain** et l'**Agent Executor** basé sur les fonct
 
 ---
 
-##  Architecture du Projet
+##  Architecture du projet
 
 L'architecture est construite autour de l'outil **LangGraph**, qui gère l'état et le flux de travail de l'Agent. Nous utilisons une structure modulaire avec le principe de la **séparation des préoccupations**.
 
@@ -19,7 +19,7 @@ L'architecture est construite autour de l'outil **LangGraph**, qui gère l'état
 
 ---
 
-##  Installation et Lancement
+##  Installation et lancement
 
 ### 1. Pré-requis
 
@@ -30,7 +30,7 @@ L'architecture est construite autour de l'outil **LangGraph**, qui gère l'état
   -`GCP_REGION` : Région de déploiement Cloud Run  
   -`GCP_SA_KEY` : Fichier JSON de ta **Service Account Key** 
 
-### 2. Configuration de l'Environnement
+### 2. Configuration de l'environnement
 
 Créez un fichier **`.env`** à la racine du projet pour stocker toutes les configurations sensibles.
 
@@ -46,17 +46,17 @@ LLM_MODEL=gpt-4o-mini
 CHROMA_DB_DIR=./chroma_db_agent
 DOCUMENT_PATH=./data/finance_document.pdf
 ```
-### 3. Installation des Dépendances
+### 3. Installation des dépendances
 
 Créez un fichier **`requirements.txt`** listant toutes les bibliothèques nécessaires, puis exécutez l'installation.
 
 ```bash
 pip install -r requirements.txt
 ```
-### 4. Ingestion des Documents (RAG)
+### 4. Ingestion des documents (RAG)
 Le processus d'ingestion est géré automatiquement au premier lancement (ou lors de l'importation de finance_rag.py). Assurez-vous que le document PDF de référence (finance_document.pdf) est placé dans le dossier ./data.
 
-### 5. Lancement de l'Application
+### 5. Lancement de l'application
 Lancez l'interface web via Chainlit :
 l'application sera accessible via l'URL affichée dans le terminal (généralement http://localhost:8000).
 ```bash
@@ -69,12 +69,12 @@ Le projet a été déployé temporairement sur Google Cloud Run via GitHub Actio
 - logs et erreurs sont monitorés via Cloud Run pour assurer la stabilité durant la période active.
 
 
-# Instructions de Test
+# Instructions de test
 L'Agent Orchestrateur est capable de choisir l'outil approprié. Testez les différents modes :
 
 | Scénario | Exemple de Requête                                             | Outil (via Agent) |
 | :--- |:---------------------------------------------------------------| :--- |
-| **RAG** | *Quelle est la politique de congés selon le manuel ?*          | `Document_QandA` |
+| **RAG** | *Quelle est la politique de congés selon le manuel ?*          | `finance_document.pdf` |
 | **Calcul** | *Calcule 15% de 2500.*                                         | `calculator` |
 | **Web Search** | *Qui a remporté la dernière élection présidentielle aux USA ?* | `web_search` |
 | **Météo** | *Donne la météo pour Londres, UK.*                             | `weather` |
