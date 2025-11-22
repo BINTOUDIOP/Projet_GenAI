@@ -1,3 +1,4 @@
+# lien document : https://www.lafinancepourtous.com/IMG/pdf/guide_pedagogique/guide-pedagogique.pdf
 import os
 from dotenv import load_dotenv
 from typing import List
