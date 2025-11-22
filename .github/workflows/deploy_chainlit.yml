@@ -3,7 +3,7 @@ name: 'Build and Deploy Chainlit Agent to Cloud Run'
 on:
   push:
     branches:
-      - branche-bintou
+      - main
   workflow_dispatch:
 
 env:
@@ -66,6 +66,7 @@ jobs:
           env_vars: |
             OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
             TAVILY_API_KEY=${{ secrets.TAVILY_API_KEY }}
+            OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
           flags: --allow-unauthenticated
 
       - name: 'Show output URL'
